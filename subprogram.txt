@@ -1,0 +1,102 @@
+#include "DLL.h" 
+
+address createElement (infotype data){
+
+}
+
+
+List createNewList(){
+    ...
+}
+
+bool isEmpty (List a){
+   return first(a) == NIL && last(a) == NIL;
+}
+
+//silahkan uncomment untuk NIM ganjil
+//void insertFirst (List &a, address p){
+//    ...
+//}
+
+//silahkan uncomment untuk NIM genap
+//void insertLast(List &a, address p){
+//    ...
+/}
+
+void insertAfter(List &a, infotype x, address p){
+    //tidak wajib diisi
+}
+
+void deleteFirst(List &a, address p){
+    if (isEmpty(a)) {
+        cout << "list kosong" << endl;
+    } else if (first(a) != last(a)){
+        p = first(a);
+        first(a) = next(p);
+        prev(first(a)) = NIL;
+        next(p) = NIL;
+    } else { //tinggal 1 elemen
+        p = first(l);
+        first(a) = NIL;
+        last(a) = NIL;
+        next(p) = NIL;
+        prev(p) = NIL;
+    }
+}
+
+void deleteLast(List &a, address p){
+    if (isEmpty(a)) {
+        cout << "list kosong" << endl;
+    } else if (next(first(a))==NIL){
+        p = first(a);
+        first(a) = NIL;
+        last(a) = NIL;
+        next(p) = NIL;
+        prev(p) = NIL;
+    }else{
+        p = last(a);
+        last(a) = prev(p);
+        prev(p) = NIL;
+        next(last(a)) = NIL;
+    }
+
+}
+
+int length(List a) {
+    int jml = 1;
+    address p = first(a);
+    if(p == NIL){
+       return 0;
+    }else {
+       while(p != last(a)){
+           jml++;
+           p = next(p);
+       }
+       return jml;
+    }
+}
+
+
+address findElement (List a, infotype x) {
+    address Q;
+    if (isEmpty(a)){
+        return false;
+    }else {
+        Q = first(a);
+        while(next(Q) != NIL && info(Q) != x) {
+            Q = next(Q);
+        }
+
+        if (info(Q) != x){
+            return false;
+        }else
+            return true;
+    }
+}
+
+void printList(List a){
+    ...
+}
+
+//buatlah subprogram splitlist
+...
